@@ -6,7 +6,7 @@ A full-stack form builder application that allows administrators to create dynam
 
 ## 🚀 Live Deployment
 
-- **Frontend**: [Deployed on Vercel](https://forms.jnaneshreddy.social/) 
+- **Frontend**: [Deployed on Vercel](https://froms-six.vercel.app/) 
 - **Backend**: [https://froms-5jow.onrender.com](https://froms-5jow.onrender.com)
 
 ## 📋 Features
