@@ -6,14 +6,14 @@ A full-stack form builder application that allows administrators to create dynam
 
 ## 🚀 Live Deployment
 
-- **Frontend**: [Deployed on Vercel](https://forms.jnaneshreddy.social/) *(Update with your actual Vercel URL)*
+- **Frontend**: [Deployed on Vercel](https://forms.jnaneshreddy.social/) 
 - **Backend**: [https://froms-5jow.onrender.com](https://froms-5jow.onrender.com)
 
 ## 📋 Features
 
 ### Admin Features
 - 🔐 **Admin Authentication** - Secure login/logout system
-- 📝 **Form Builder** - Drag-and-drop form creation with multiple field types
+- 📝 **Form Builder** - Admin can create forms 
 - ✏️ **Form Management** - Create, edit, and delete forms
 - 👥 **User Management** - Add, view, and delete users
 - 📊 **Response Analytics** - View all form submissions with user details
