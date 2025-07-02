@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import FormBuilder from '../components/FormBuilder';
 import Navbar from '../components/Navbar';
+import { API_ENDPOINTS, getAuthHeaders } from '../utils/api';
 
 const AdminDashboard = () => {
   const [forms, setForms] = useState([]);
@@ -27,12 +28,9 @@ const AdminDashboard = () => {
   // Fetch existing forms when component mounts
   const fetchForms = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/forms', {
+      const response = await fetch(API_ENDPOINTS.FORMS, {
         method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        headers: getAuthHeaders(),
       });
 
       if (response.ok) {
@@ -52,7 +50,7 @@ const AdminDashboard = () => {
   const fetchUserData = async (userId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/submissions/user/${userId}`, {
+      const response = await fetch(API_ENDPOINTS.USER_BY_ID_SUBMISSIONS(userId), {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -76,7 +74,7 @@ const AdminDashboard = () => {
   const fetchResponses = useCallback(async (formId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/submissions/form/${formId}`, {
+      const response = await fetch(API_ENDPOINTS.SUBMISSIONS_BY_FORM(formId), {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -130,7 +128,7 @@ const AdminDashboard = () => {
     setIsUsersLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/auth/users', {
+      const response = await fetch(API_ENDPOINTS.USERS, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -177,7 +175,7 @@ const AdminDashboard = () => {
     const updateFormOnServer = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:5000/api/forms/${updatedForm._id}`, {
+        const response = await fetch(API_ENDPOINTS.FORM_BY_ID(updatedForm._id), {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -207,7 +205,7 @@ const AdminDashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/forms/${formId}`, {
+      const response = await fetch(API_ENDPOINTS.FORM_BY_ID(formId), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -238,7 +236,7 @@ const AdminDashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch(API_ENDPOINTS.REGISTER, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -270,7 +268,7 @@ const AdminDashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/auth/users/${userId}`, {
+      const response = await fetch(API_ENDPOINTS.USER_BY_ID(userId), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

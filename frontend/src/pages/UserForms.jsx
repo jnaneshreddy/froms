@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
 import Navbar from '../components/Navbar';
+import { API_ENDPOINTS, getAuthHeaders } from '../utils/api';
 
 const UserForms = () => {
   const [forms, setForms] = useState([]);
@@ -19,7 +20,7 @@ const UserForms = () => {
   useEffect(() => {
     const fetchForms = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/forms');
+        const response = await fetch(API_ENDPOINTS.FORMS);
         const data = await response.json();
         setForms(data);
       } catch (error) {
@@ -39,12 +40,13 @@ const UserForms = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/forms/${selectedForm._id}/responses`, {
+      const response = await fetch(API_ENDPOINTS.SUBMISSIONS, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ responses }),
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ 
+          formId: selectedForm._id,
+          responses 
+        }),
       });
 
       const result = await response.json();

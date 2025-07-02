@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FormField from './FormField';
 import Button from './Button';
+import { API_ENDPOINTS, getAuthHeaders } from '../utils/api';
 
 const FormBuilder = ({ onSave, formToEdit }) => {
   const [title, setTitle] = useState('');
@@ -32,16 +33,13 @@ const FormBuilder = ({ onSave, formToEdit }) => {
 
       const formData = { title, description, fields };
       const url = formToEdit
-        ? `http://localhost:5000/api/forms/${formToEdit._id}`
-        : 'http://localhost:5000/api/forms';
+        ? API_ENDPOINTS.FORM_BY_ID(formToEdit._id)
+        : API_ENDPOINTS.FORMS;
       const method = formToEdit ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
         method,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify(formData),
       });
 

@@ -12,7 +12,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://your-vercel-app.vercel.app',  // Replace with your actual Vercel URL
+    /\.vercel\.app$/,  // Allow any Vercel subdomain
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Connect to MongoDB

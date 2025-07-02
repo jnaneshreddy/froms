@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
+import { API_ENDPOINTS, getAuthHeaders } from '../utils/api';
 
 const UserDashboard = () => {
   const [forms, setForms] = useState([]);
@@ -10,6 +12,7 @@ const UserDashboard = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedForms, setSubmittedForms] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
 
   // Get current user from localStorage
   useEffect(() => {
@@ -26,7 +29,7 @@ const UserDashboard = () => {
           return;
         }
 
-        const response = await fetch('http://localhost:5000/api/forms', {
+        const response = await fetch(API_ENDPOINTS.FORMS, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -62,7 +65,7 @@ const UserDashboard = () => {
         responses,
       };
 
-      const response = await fetch('http://localhost:5000/api/submissions', {
+      const response = await fetch(API_ENDPOINTS.SUBMISSIONS, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
