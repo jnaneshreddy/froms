@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
-import { API_ENDPOINTS, getAuthHeaders } from '../utils/api';
+import { API_ENDPOINTS } from '../utils/api';
 
 const UserDashboard = () => {
   const [forms, setForms] = useState([]);
@@ -12,7 +11,6 @@ const UserDashboard = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedForms, setSubmittedForms] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const navigate = useNavigate();
 
   // Get current user from localStorage
   useEffect(() => {
