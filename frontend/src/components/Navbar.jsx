@@ -8,8 +8,6 @@ const Navbar = ({ user }) => {
     // Clear token and user data from localStorage
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    
-    // Navigate to login page
     navigate('/');
   };
 

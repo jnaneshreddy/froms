@@ -63,7 +63,7 @@ const FormBuilder = ({ onSave, formToEdit }) => {
     }
   };
 
-  // Updated FormBuilder to support dropdown and checkbox options
+  
   const handleOptionChange = (fieldIndex, optionIndex, value) => {
     const updatedFields = [...fields];
     updatedFields[fieldIndex].options[optionIndex] = value;

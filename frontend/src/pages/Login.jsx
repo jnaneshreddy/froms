@@ -18,21 +18,21 @@ const handleLogin = async (e) => {
     });
 
     const data = await response.json();
-    console.log('Response Status:', response.status); // Log response status
-    console.log('Response Data:', data); // Log backend response
+    console.log('Response Status:', response.status); 
+    console.log('Response Data:', data); 
 
     if (response.ok) {
-      localStorage.setItem('token', data.token); // Store token
-      localStorage.setItem('user', JSON.stringify(data.user)); // Store user data
-      const userRole = data.user?.role; // Extract role from the "user" object
-      console.log('User Role:', userRole); // Log role
+      localStorage.setItem('token', data.token); 
+      localStorage.setItem('user', JSON.stringify(data.user)); 
+      const userRole = data.user?.role; 
+      console.log('User Role:', userRole); 
 
       if (userRole === 'admin') {
         console.log('Navigating to Admin Dashboard');
-        navigate('/admin'); // Redirect to Admin
+        navigate('/admin'); 
       } else if (userRole === 'user') {
         console.log('Navigating to User Dashboard');
-        navigate('/user'); // Redirect to User
+        navigate('/user'); 
       } else {
         console.error('Invalid user role received:', userRole);
         setError('Invalid user role. Please contact support.');

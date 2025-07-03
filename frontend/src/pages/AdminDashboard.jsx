@@ -8,7 +8,7 @@ const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedForm, setSelectedForm] = useState(null);
   const [responses, setResponses] = useState([]);
-  const [selectedTab, setSelectedTab] = useState('forms'); // New state for tab selection
+  const [selectedTab, setSelectedTab] = useState('forms'); 
   const [users, setUsers] = useState([]);
   const [isUsersLoading, setIsUsersLoading] = useState(false);
   const [newUser, setNewUser] = useState({
@@ -25,7 +25,7 @@ const AdminDashboard = () => {
     setCurrentUser(user);
   }, []);
 
-  // Fetch existing forms when component mounts
+  
   const fetchForms = async () => {
     try {
       const response = await fetch(API_ENDPOINTS.FORMS, {
@@ -62,11 +62,11 @@ const AdminDashboard = () => {
         return userData.email; // Return only the email
       } else {
         console.error('Error fetching user data:', await response.text());
-        return "Email not found"; // Return fallback value
+        return "Email not found"; 
       }
     } catch (err) {
       console.error('Error fetching user data:', err);
-      return "Email not found"; // Return fallback value
+      return "Email not found"; 
     }
   };
 
@@ -83,19 +83,19 @@ const AdminDashboard = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Submissions data:', data); // Debug log
+        console.log('Submissions data:', data); 
         const form = forms.find((f) => f._id === formId);
 
         if (form && data.length > 0) {
           const mappedResponses = await Promise.all(
             data.map(async (submission) => {
-              // Ensure userId is a string, not an object
+             
               const userId = typeof submission.userId === 'object' ? submission.userId._id || submission.userId.toString() : submission.userId;
-              console.log('Processing userId:', userId); // Debug log
+              console.log('Processing userId:', userId); 
               
-              const userEmail = await fetchUserData(userId); // Fetch email directly
+              const userEmail = await fetchUserData(userId); 
               
-              // Safely handle submission.responses
+              
               const responses = submission.responses || {};
               const mappedFields = Object.entries(responses).reduce((acc, [fieldId, answer]) => {
                 const field = form.fields.find((f) => f._id === fieldId);
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
               }, {});
 
               return {
-                userEmail, // Use fetched email
+                userEmail, 
                 responses: mappedFields,
               };
             })
@@ -148,12 +148,12 @@ const AdminDashboard = () => {
     }
   }, []);
 
-  // Initial data fetch
+ 
   useEffect(() => {
     fetchForms();
   }, []);
 
-  // Handle tab changes
+  
   useEffect(() => {
     if (selectedTab === 'responses' && selectedForm) {
       fetchResponses(selectedForm._id);
@@ -162,16 +162,16 @@ const AdminDashboard = () => {
     }
   }, [selectedTab, selectedForm, fetchResponses, fetchUsers]);
 
-  // Callback when a form is updated
+  
   const handleFormUpdated = (updatedForm) => {
     setForms((prevForms) => {
       const updatedForms = prevForms.map((form) => (form._id === updatedForm._id ? updatedForm : form));
       return updatedForms;
     });
 
-    setSelectedForm(updatedForm); // Ensure the updated form is selected
+    setSelectedForm(updatedForm); 
 
-    // Send updated form to the backend to ensure user-side updates
+    
     const updateFormOnServer = async () => {
       try {
         const token = localStorage.getItem('token');
@@ -185,7 +185,7 @@ const AdminDashboard = () => {
         });
 
         if (response.ok) {
-          fetchResponses(updatedForm._id); // Refetch responses for the updated form
+          fetchResponses(updatedForm._id); 
         } else {
           console.error('Error updating form on server:', await response.text());
         }
@@ -367,7 +367,7 @@ const AdminDashboard = () => {
                           <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">{form.title}</h3>
                           <button
                             onClick={(e) => {
-                              e.stopPropagation(); // Prevent triggering edit
+                              e.stopPropagation(); 
                               deleteForm(form._id);
                             }}
                             className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors duration-200"
