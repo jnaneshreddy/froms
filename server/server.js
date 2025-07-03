@@ -14,9 +14,8 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 const corsOptions = {
   origin: [
-    'http://localhost:3000',
-    'https://your-vercel-app.vercel.app',  // Replace with your actual Vercel URL
-    /\.vercel\.app$/,  // Allow any Vercel subdomain
+    'http://localhost:3000',  
+    /\.vercel\.app$/,  
   ],
   credentials: true,
   optionsSuccessStatus: 200

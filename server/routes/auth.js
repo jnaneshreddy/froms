@@ -50,9 +50,9 @@ router.get("/test", (req, res) => {
     res.json({ message: "Auth routes are working!" });
 });
 
-// Logout route (mainly for consistency, logout is handled client-side)
+// Logout route 
 router.post("/logout", auth(), (req, res) => {
-    // In a real app, you might want to blacklist the token or store logout info
+    
     res.json({ message: "Logged out successfully" });
 });
 
@@ -81,7 +81,7 @@ router.delete("/users/:id", auth(), async (req, res) => {
             return res.status(403).json({ message: "Access denied. Admin only." });
         }
 
-        // Prevent admin from deleting themselves
+       
         if (req.params.id === req.user.id) {
             return res.status(400).json({ message: "Cannot delete your own account" });
         }

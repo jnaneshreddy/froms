@@ -19,7 +19,7 @@ router.get("/:id", auth(), async (req, res) => {
 
         res.json(form);
     } catch (error) {
-        // Handle invalid ID format or other errors
+        
         res.status(500).json({ message: "Server error", error: error.message });
     }
 });
@@ -57,10 +57,10 @@ router.put('/:id', auth('admin'), async (req, res) => {
         const { id } = req.params;
         const updatedData = req.body;
 
-        // Find and update the form
+        
         const updatedForm = await Form.findByIdAndUpdate(id, updatedData, {
-            new: true, // Return the updated document
-            runValidators: true, // Ensure validation rules are applied
+            new: true, 
+            runValidators: true, 
         });
 
         if (!updatedForm) {
