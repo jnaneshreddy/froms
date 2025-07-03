@@ -6,14 +6,14 @@ A full-stack form builder application that allows administrators to create dynam
 
 ## 🚀 Live Deployment
 
-- **Frontend**: [Deployed on Vercel](https://forms.jnaneshreddy.social/) *(Update with your actual Vercel URL)*
+- **Frontend**: [Deployed on Vercel](https://froms-six.vercel.app/) 
 - **Backend**: [https://froms-5jow.onrender.com](https://froms-5jow.onrender.com)
 
 ## 📋 Features
 
 ### Admin Features
 - 🔐 **Admin Authentication** - Secure login/logout system
-- 📝 **Form Builder** - Drag-and-drop form creation with multiple field types
+- 📝 **Form Builder** - Admin can create forms 
 - ✏️ **Form Management** - Create, edit, and delete forms
 - 👥 **User Management** - Add, view, and delete users
 - 📊 **Response Analytics** - View all form submissions with user details
@@ -28,12 +28,7 @@ A full-stack form builder application that allows administrators to create dynam
 ### Form Field Types
 - 📝 **Text Input** - Single line text fields
 - 📄 **Textarea** - Multi-line text input
-- 📧 **Email** - Email validation
 - 🔢 **Number** - Numeric input
-- 📞 **Phone** - Phone number input
-- 📅 **Date** - Date picker
-- 📋 **Select Dropdown** - Single choice selection
-- 🔘 **Radio Buttons** - Single choice from options
 - ☑️ **Checkboxes** - Multiple choice selection
 
 ## 🛠️ Tech Stack
@@ -43,7 +38,6 @@ A full-stack form builder application that allows administrators to create dynam
 - **React Router 7.6.3** - Client-side routing
 - **Tailwind CSS 4.1.11** - Utility-first CSS framework
 - **Lucide React** - Modern icon library
-- **Shadcn/UI** - High-quality UI components
 
 ### Backend
 - **Node.js** - JavaScript runtime
