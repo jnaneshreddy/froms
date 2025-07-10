@@ -381,7 +381,7 @@ const AdminDashboard = () => {
                         )}
                         <div className="flex justify-between items-center text-sm text-gray-500">
                           <span>{form.fields?.length || 0} fields</span>
-                          <span>{new Date(form.createdAt).toLocaleDateString()}</span>
+{/*                           <span>{new Date(form.createdAt).toLocaleDateString()}</span> */}
                         </div>
                       </div>
                     ))}
