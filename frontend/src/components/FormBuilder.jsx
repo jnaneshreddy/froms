@@ -209,7 +209,7 @@ const FormBuilder = ({ onSave, formToEdit }) => {
                         ))}
                         <button
                           onClick={() => addOption(index)}
-                          className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 py-2 rounded-lg shadow-md transition-all duration-200 transform hover:scale-105"
+                          className=" ml-5 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 py-2 rounded-lg shadow-md transition-all duration-200 transform hover:scale-105"
                         >
                           + Add Option
                         </button>
