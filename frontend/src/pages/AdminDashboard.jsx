@@ -524,12 +524,12 @@ const AdminDashboard = () => {
                         </div>
                         <p className="text-gray-600 text-sm mb-2">Email: {user.email}</p>
                         <div className="flex space-x-2">
-                          <button
+{/*                           <button
                             className="flex-1 bg-blue-600 text-white rounded-md shadow-md py-2 text-sm font-semibold hover:bg-blue-700 transition-colors duration-200"
                             onClick={() => {}}
                           >
                             Edit
-                          </button>
+                          </button> */}
                           <button
                             className="flex-1 bg-red-600 text-white rounded-md shadow-md py-2 text-sm font-semibold hover:bg-red-700 transition-colors duration-200"
                             onClick={() => deleteUser(user._id)}
